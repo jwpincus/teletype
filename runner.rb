@@ -1,8 +1,8 @@
 require './lib/printer'
 
-printer = Printer.new
+typer = Typer.new
 
 while true
-  printer.type_string(gets.chomp)
+  typer.type_string(gets.chomp)
   
 end
