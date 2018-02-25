@@ -4,6 +4,7 @@ class Typer
 
   def initialize
     @gpio = RPi::GPIO
+    @gpio.reset
     @gpio.set_numbering(:bcm)
     @matrix = {
       ',' => [26, 21], '/' => [26, 20], '1' => [26, 16], '3' => [26, 12], '7' => [26, 7], '5' => [26, 8], '-' => [26, 25], '9' => [26, 24],
