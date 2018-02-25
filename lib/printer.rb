@@ -22,7 +22,7 @@ class Typer
       if @gpio.low? signal_pin
         @gpio.set_low trigger_pin
         sleep(0.028)
-        @gpio.set_high
+        @gpio.set_high trigger_pin
         break
       end
     end
