@@ -41,11 +41,12 @@ class Typer
   def type_string(string)
     column = 0
     string.split('').each do |char|
-      if column < 80 && char != ' '
+      if column < 45 && char != ' '
         type_char(char.downcase)
         column += 1
       else
         type_char("return")
+        puts 'return'
         column = 0
       end
     end
