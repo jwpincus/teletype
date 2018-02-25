@@ -1,5 +1,5 @@
 require_relative './print_helper'
-
+require 'pry'
 class Typer
 
   def initialize
@@ -19,6 +19,7 @@ class Typer
   end
   
   def send_char(signal_pin, trigger_pin)
+    binding.pry
     while true
       if @gpio.low? signal_pin
         @gpio.set_low trigger_pin
