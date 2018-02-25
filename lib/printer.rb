@@ -27,6 +27,7 @@ class Typer
         break
       end
     end
+    puts 'sent'
     sleep(0.5)
   end
   
@@ -34,6 +35,7 @@ class Typer
     signal_pin = @matrix[char][0]
     trigger_pin = @matrix[char][1]
     send_char(signal_pin, trigger_pin)
+    puts char
   end
   
   def type_string(string)
