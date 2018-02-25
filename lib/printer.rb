@@ -14,7 +14,7 @@ class Typer
       "''" => [11, 21], 'a' => [11, 20], 'g' => [11, 111], 'j' => [11, 12], 'd' => [11, 7], 'l' => [11, 8],
       ' ' => [9, 21], 'return' => [9, 20], 'newline' => [9, 19], 'backspace' => [9, 8], 'shift' => [10, 21]
         }
-    @matrix.each {|k,v| setup_gpio(k)}    
+    @matrix.each {|char,v| setup_gpio(k)}    
   end
   
   def send_char(signal_pin, trigger_pin)
