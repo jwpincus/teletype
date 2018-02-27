@@ -1,5 +1,4 @@
 require_relative './print_helper'
-require 'pry'
 class Typer
 
   def initialize
@@ -13,7 +12,7 @@ class Typer
       ';' => [6, 21], 'z' => [6, 20], 'f' => [6, 16], 'h' => [6, 12], 's' => [6, 7], 'k' => [6, 8], 'x' => [6, 25], 'c' => [6, 24],
       ']' => [5, 21], 'w' => [5, 20], 'r' => [5, 15], 'y' => [5, 12], 'p' => [5, 7], 'i' => [5, 8], 'm' => [5, 25], 'b' => [5, 24],
       "''" => [11, 21], 'a' => [11, 20], 'g' => [11, 16], 'j' => [11, 12], 'd' => [11, 7], 'l' => [11, 8],
-      ' ' => [9, 21], 'return' => [9, 20], 'newline' => [9, 16], 'backspace' => [9, 8], 'shift' => [10, 21]
+      ' ' => [9, 21], "\n" => [9, 20], 'newline' => [9, 16], 'backspace' => [9, 8], 'shift' => [10, 21]
         }
     @matrix.each {|char,v| setup_gpio(char)}    
   end
@@ -45,10 +44,16 @@ class Typer
         type_char(char.downcase)
         column += 1
       else
-        type_char("return")
+        type_char("\n")
         puts 'return'
         column = 0
       end
+    end
+  end
+  
+  def newline(count = 1)
+    count.times.do
+      type_char("\n")
     end
   end
   
