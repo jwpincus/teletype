@@ -61,8 +61,8 @@ class Typer
   end
 
   def setup_gpio(char)
-    @gpio.setup(@matrix[char][0], as: :input, pull: :down)
-    @gpio.setup(@matrix[char][1], as: :output, initialize: :low)
+    @gpio.setup(@matrix[char][0], as: :input, pull: :up)
+    @gpio.setup(@matrix[char][1], as: :output, initialize: :high)
   end
 
 end
