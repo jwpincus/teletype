@@ -1,3 +1,3 @@
-# require 'rpi_gpio'
+require 'rpi_gpio'
 require 'httparty'
 require 'pry'

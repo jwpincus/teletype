@@ -14,9 +14,9 @@ class Typer
       "''" => [11, 21], 'a' => [11, 20], 'g' => [11, 16], 'j' => [11, 12], 'd' => [11, 7], 'l' => [11, 8],
       ' ' => [9, 21], "\n" => [9, 20], 'newline' => [9, 16], 'backspace' => [9, 8], 'shift' => [10, 21]
         }
-    @matrix.each {|char,v| setup_gpio(char)}    
+    @matrix.each {|char,v| setup_gpio(char)}
   end
-  
+
   def send_char(signal_pin, trigger_pin)
     while true
       if @gpio.low? signal_pin
@@ -29,14 +29,17 @@ class Typer
     puts 'sent'
     sleep(0.5)
   end
-  
+
   def type_char(char)
-    signal_pin = @matrix[char][0]
-    trigger_pin = @matrix[char][1]
-    send_char(signal_pin, trigger_pin)
+    letter = @matrix[char]
+    if letter
+      signal_pin = letter[0]
+      trigger_pin = letter[1]
+      send_char(signal_pin, trigger_pin)
+    end
     puts char
   end
-  
+
   def type_string(string)
     column = 0
     string.split('').each do |char|
@@ -50,16 +53,16 @@ class Typer
       end
     end
   end
-  
+
   def newline(count = 1)
-    count.times.do
+    count.times do
       type_char("\n")
     end
   end
-  
+
   def setup_gpio(char)
     @gpio.setup(@matrix[char][0], as: :input, pull: :up)
     @gpio.setup(@matrix[char][1], as: :output, initialize: :high)
   end
-    
+
 end
