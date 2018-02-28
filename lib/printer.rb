@@ -19,10 +19,10 @@ class Typer
 
   def send_char(signal_pin, trigger_pin)
     while true
-      if @gpio.high? signal_pin
-        @gpio.set_high trigger_pin
-        sleep(0.022)
+      if @gpio.low? signal_pin
         @gpio.set_low trigger_pin
+        sleep(0.022)
+        @gpio.set_high trigger_pin
         break
       end
     end
